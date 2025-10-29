@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
+<html lang="pt-BR"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Crie seu site profissional com a YnotHost! Hospedagem rápida, suporte 24/7 e modelos personalizados para padarias, clínicas e lojas virtuais. Tenha seu site online em 48h!">
@@ -21,7 +19,93 @@
   <meta property="twitter:description" content="Crie seu site profissional com a YnotHost! Hospedagem rápida, suporte 24/7 e modelos personalizados para padarias, clínicas e lojas virtuais. Tenha seu site online em 48h!">
   <meta property="twitter:image" content="assets/images/og-image.jpg"> <!-- Substituir por uma imagem de pré-visualização do seu site -->
 
-  <title>YnotHost - Sites Profissionais e Hospedagem</title>nt="Hospedagem rápida, suporte dedicado e sites profissionais para qualquer negócio. Conheça nossos planos a partir de R$ 25,69/mês.">
+  <title>YnotHost - Sites Profissionais e Hospedagem</title><style>
+            .back-to-top {
+                position: fixed;
+                bottom: 100px;
+                right: 25px;
+                width: 50px;
+                height: 50px;
+                background: linear-gradient(45deg, #333, #555);
+                color: white;
+                border: none;
+                border-radius: 50%;
+                cursor: pointer;
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+                z-index: 999;
+                font-size: 1.2rem;
+            }
+            
+            .back-to-top.show {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .back-to-top:hover {
+                background: linear-gradient(45deg, #ff4081, #e73370);
+                transform: translateY(-2px);
+            }
+        </style><style>
+            .animate-element {
+                opacity: 0;
+                transform: translateY(30px);
+                transition: all 0.6s ease;
+            }
+            
+            .animate-element.animate-in {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            
+            .error {
+                border: 2px solid #f44336 !important;
+                animation: shake 0.5s ease;
+            }
+            
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                25% { transform: translateX(-5px); }
+                75% { transform: translateX(5px); }
+            }
+        </style><style id="notification-styles">
+            .notification {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 8px;
+                color: white;
+                font-weight: 500;
+                z-index: 10000;
+                animation: slideInRight 0.3s ease;
+                max-width: 300px;
+            }
+            
+            .notification-info {
+                background: linear-gradient(45deg, #2196F3, #1976D2);
+            }
+            
+            .notification-success {
+                background: linear-gradient(45deg, #4CAF50, #388E3C);
+            }
+            
+            .notification-error {
+                background: linear-gradient(45deg, #f44336, #d32f2f);
+            }
+            
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        </style></head><body>nt="Hospedagem rápida, suporte dedicado e sites profissionais para qualquer negócio. Conheça nossos planos a partir de R$ 25,69/mês."&gt;
   <meta name="keywords" content="hospedagem de sites, criar site, site profissional, YnotHost, hospedagem barata, hospedagem web">
   <meta name="author" content="YnotHost">
   <meta name="robots" content="index, follow">
@@ -47,15 +131,15 @@
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorig  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorig="" <link="">
   
   <!-- Font Awesome (Ícones) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
   
   <!-- Arquivo de CSS -->
   <link rel="stylesheet" href="style.css">
-</head>
-<body>
+
+
   <!-- Skip to main content para acessibilidade -->
   <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
 
@@ -108,7 +192,7 @@
   </header>
 
   <main id="main-content" role="main">
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" aria-labelledby="hero-title" style="transform: translateY(0px);">
       <div class="hero-background">
         <img src="assets/images/hero_background.jpg" alt="Criação de sites profissionais" class="hero-bg-image">
         <div class="hero-overlay"></div>
@@ -116,7 +200,7 @@
       <div class="container">
         <div class="hero-content">
           <div class="hero-text">
-            <h2 id="hero-title">Seu Site Profissional em <span class="highlight">48 Horas!</span></h2>
+            <h2 id="hero-title" class="animate-element animate-in">Seu Site Profissional em <span class="highlight">48 Horas!</span></h2>
             <p class="hero-subtitle">Criamos sites modernos e responsivos para sua empresa. Hospedagem confiável, suporte 24/7 e preços que cabem no seu bolso.</p>
             
             <div class="hero-features">
@@ -176,8 +260,8 @@
           
           <div class="hero-image">
             <div class="hero-showcase">
-              <img src="assets/images/showcase_main.jpg" alt="Desenvolvimento de sites profissionais" class="showcase-main" loading="lazy">
-              <img src="assets/images/showcase_secondary.png" alt="Sites responsivos e modernos" class="showcase-secondary" loading="lazy">
+              <img src="file:///C:/Users/TonyM/Downloads/ynothost-melhorado-final-v10%20(1)/home/ubuntu/ynothost-melhorado/assets/images/showcase_main.jpg" alt="Desenvolvimento de sites profissionais" class="showcase-main" loading="lazy">
+              <img src="file:///C:/Users/TonyM/Downloads/ynothost-melhorado-final-v10%20(1)/home/ubuntu/ynothost-melhorado/assets/images/showcase_secondary.png" alt="Sites responsivos e modernos" class="showcase-secondary" loading="lazy">
             </div>
             
             <div class="floating-badge">
@@ -206,9 +290,9 @@
 
     <section id="planos" aria-labelledby="planos-title">
       <div class="container">
-        <h2 id="planos-title">Nossos Planos</h2>
+        <h2 id="planos-title" class="animate-element">Nossos Planos</h2>
         <div class="plans">
-          <article class="plan" role="article">
+          <article class="plan animate-element" role="article">
             <i class="fa-solid fa-laptop-code" aria-hidden="true"></i>
             <h3>Básico</h3>
             <p>Até 5 páginas + e-mail profissional + SSL</p>
@@ -218,7 +302,7 @@
             </a>
           </article>
           
-          <article class="plan plan-popular" role="article">
+          <article class="plan plan-popular animate-element" role="article">
             <div class="popular-badge" aria-label="Plano mais vendido">Mais Vendido</div>
             <i class="fa-solid fa-fire" aria-hidden="true"></i>
             <h3>🔥 Pro</h3>
@@ -229,7 +313,7 @@
             </a>
           </article>
 
-          <article class="plan" role="article">
+          <article class="plan animate-element" role="article">
             <i class="fa-solid fa-store" aria-hidden="true"></i>
             <h3>Loja Virtual</h3>
             <p>Loja completa + 50 produtos + frete</p>
@@ -244,12 +328,12 @@
 
     <section id="modelos" aria-labelledby="modelos-title">
       <div class="container">
-        <h2 id="modelos-title">Modelos de Sites</h2>
+        <h2 id="modelos-title" class="animate-element">Modelos de Sites</h2>
         <p>Escolha um modelo e personalizamos para sua empresa:</p>
         <div class="models">
-          <article class="model" role="article">
+          <article class="model animate-element" role="article">
             <a href="modelos/padaria/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="assets/images/padaria_vitrine_paes.webp" alt="Exemplo de site para padaria com design moderno" loading="lazy">
+              <img src="assets/images/padaria_vitrine_paes.webp" alt="Exemplo de site para padaria com design moderno" loading="lazy" class="lazy">
               <div class="model-content">
                 <h3>Padaria</h3>
                 <p>Design moderno para padarias e lanchonetes.</p>
@@ -258,9 +342,9 @@
             </a>
           </article>
           
-          <article class="model" role="article">
+          <article class="model animate-element" role="article">
             <a href="modelos/clinica/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="assets/images/clinica_recepcao.jpg" alt="Exemplo de site para clínica com layout profissional" loading="lazy">
+              <img src="assets/images/clinica_recepcao.jpg" alt="Exemplo de site para clínica com layout profissional" loading="lazy" class="lazy">
               <div class="model-content">
                 <h3>Clínica</h3>
                 <p>Site profissional para clínicas e consultórios.</p>
@@ -269,9 +353,9 @@
             </a>
           </article>
           
-          <article class="model" role="article">
+          <article class="model animate-element" role="article">
             <a href="modelos/loja-virtual/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="assets/images/loja_vitrine_produtos.jpg" alt="Exemplo de loja virtual com sistema de vendas online" loading="lazy">
+              <img src="assets/images/loja_vitrine_produtos.jpg" alt="Exemplo de loja virtual com sistema de vendas online" loading="lazy" class="lazy">
               <div class="model-content">
                 <h3>Loja Virtual</h3>
                 <p>Pronto para vender online.</p>
@@ -280,9 +364,9 @@
             </a>
           </article>
           
-          <article class="model" role="article">
+          <article class="model animate-element" role="article">
             <a href="modelos/contabilidade/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="assets/images/contabilidade_escritorio.jpg" alt="Exemplo de site para contabilidade com design profissional" loading="lazy">
+              <img src="assets/images/contabilidade_escritorio.jpg" alt="Exemplo de site para contabilidade com design profissional" loading="lazy" class="lazy">
               <div class="model-content">
                 <h3>Contabilidade</h3>
                 <p>Site profissional para escritórios contábeis.</p>
@@ -291,9 +375,9 @@
             </a>
           </article>
           
-          <article class="model" role="article">
+          <article class="model animate-element" role="article">
             <a href="modelos/restaurante/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="assets/images/restaurante_hero.jpg" alt="Exemplo de site para restaurante com design elegante" loading="lazy">
+              <img src="assets/images/restaurante_hero.jpg" alt="Exemplo de site para restaurante com design elegante" loading="lazy" class="lazy">
               <div class="model-content">
                 <h3>Restaurante</h3>
                 <p>Design elegante para restaurantes e bares.</p>
@@ -302,9 +386,9 @@
             </a>
           </article>
           
-          <article class="model" role="article">
+          <article class="model animate-element" role="article">
             <a href="modelos/pousada/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="assets/images/pousada_vista_externa.jpg" alt="Exemplo de site para pousada com design acolhedor" loading="lazy">
+              <img src="assets/images/pousada_vista_externa.jpg" alt="Exemplo de site para pousada com design acolhedor" loading="lazy" class="lazy">
               <div class="model-content">
                 <h3>Pousada</h3>
                 <p>Site acolhedor para pousadas e hotéis.</p>
@@ -313,19 +397,19 @@
             </a>
           </article>
           
-          <article class="model" role="article">
+          <article class="model animate-element" role="article">
             <a href="modelos/passeios/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="assets/images/passeio_barco_ilhabela.jpg" alt="Exemplo de site para turismo e passeios com design aventureiro" loading="lazy">
+              <img src="assets/images/passeio_barco_ilhabela.jpg" alt="Exemplo de site para turismo e passeios com design aventureiro" loading="lazy" class="lazy">
               <div class="model-content">
-                <h3>Turismo & Passeios</h3>
+                <h3>Turismo &amp; Passeios</h3>
                 <p>Site dinâmico para turismo e aventura.</p>
                 <span class="model-link">Ver Demonstração <i class="fas fa-external-link-alt"></i></span>
               </div>
             </a>
           </article>
-          <article class="model" role="article">
+          <article class="model animate-element" role="article">
             <a href="modelos/concessionaria/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="assets/images/concessionaria/concessionaria_hero.jpg" alt="Exemplo de site para concessionária de carros com design moderno" loading="lazy">
+              <img src="assets/images/concessionaria/concessionaria_hero.jpg" alt="Exemplo de site para concessionária de carros com design moderno" loading="lazy" class="lazy">
               <div class="model-content">
                 <h3>Concessionária</h3>
                 <p>Site elegante para concessionárias e lojas de veículos.</p>
@@ -333,9 +417,9 @@
               </div>
             </a>
           </article>
-          <article class="model" role="article">
+          <article class="model animate-element" role="article">
             <a href="modelos/oficina-mecanica/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="assets/images/oficina-mecanica/oficina_hero.jpg" alt="Exemplo de site para oficina mecânica com design robusto" loading="lazy">
+              <img src="assets/images/oficina-mecanica/oficina_hero.jpg" alt="Exemplo de site para oficina mecânica com design robusto" loading="lazy" class="lazy">
               <div class="model-content">
                 <h3>Oficina Mecânica</h3>
                 <p>Site completo para oficinas e centros automotivos.</p>
@@ -343,9 +427,9 @@
               </div>
             </a>
           </article>
-          <article class="model" role="article">
+          <article class="model animate-element" role="article">
             <a href="modelos/salao-beleza/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="assets/images/salao-beleza/salao_hero.jpg" alt="Exemplo de site para salão de beleza com design elegante" loading="lazy">
+              <img src="assets/images/salao-beleza/salao_hero.jpg" alt="Exemplo de site para salão de beleza com design elegante" loading="lazy" class="lazy">
               <div class="model-content">
                 <h3>Salão de Beleza</h3>
                 <p>Design sofisticado para salões e clínicas de estética.</p>
@@ -353,9 +437,9 @@
               </div>
             </a>
           </article>
-          <article class="model" role="article">
+          <article class="model animate-element" role="article">
             <a href="modelos/academia/index.html" target="_blank" rel="noopener noreferrer">
-              <img src="assets/images/academia/academia_hero.jpg" alt="Exemplo de site para academia com design dinâmico" loading="lazy">
+              <img src="assets/images/academia/academia_hero.jpg" alt="Exemplo de site para academia com design dinâmico" loading="lazy" class="lazy">
               <div class="model-content">
                 <h3>Academia</h3>
                 <p>Site motivador para academias e centros fitness.</p>
@@ -415,7 +499,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2025 YnotHost. Todos os direitos reservados.</p>
+        <p>© 2025 YnotHost. Todos os direitos reservados.</p>
         <p>Desenvolvido com <i class="fas fa-heart"></i> por <a href="https://www.ynothost.com.br">YnotHost</a></p>
       </div>
     </div>
@@ -427,6 +511,7 @@
   </a>
 
   <script src="script.js"></script>
-</body>
-</html>
 
+
+
+<button class="back-to-top" aria-label="Voltar ao topo"><i class="fas fa-arrow-up"></i></button></body></html>
