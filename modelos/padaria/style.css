@@ -178,13 +178,12 @@ header {
   border-radius: 2px;
 }
 
-/* Hero Section */
-.hero {
+/* Hero Se.hero {
   position: relative;
-  padding: 140px 0 100px;
-  color: #451a03;
+  padding: 120px 0 80px;
+  background: linear-gradient(rgba(255, 250, 245, 0.8), rgba(255, 250, 245, 0.8)), url('../../assets/images/padaria_hero.jpg') center/cover;
   overflow: hidden;
-  margin-top: 80px;
+}margin-top: 80px;
 }
 
 .hero-background {

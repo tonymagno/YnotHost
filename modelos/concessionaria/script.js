@@ -1,161 +1,265 @@
-// Menu Mobile Toggle
+// Dados dos veículos
+const veiculos = [
+    {
+        id: 1,
+        nome: "Toyota Corolla 2024",
+        marca: "toyota",
+        tipo: "sedan",
+        preco: 95000,
+        ano: 2024,
+        km: 0,
+        combustivel: "Gasolina",
+        cambio: "Automático",
+        imagem: "../assets/images/concessionaria_toyota_corolla.jpg",
+        descricao: "Sedã confortável e econômico, perfeito para uso diário."
+    },
+    {
+        id: 2,
+        nome: "Honda CR-V 2023",
+        marca: "honda",
+        tipo: "suv",
+        preco: 145000,
+        ano: 2023,
+        km: 15000,
+        combustivel: "Gasolina",
+        cambio: "Automático",
+        imagem: "../assets/images/concessionaria_honda_crv.jpg",
+        descricao: "SUV espaçoso com excelente desempenho e segurança."
+    },
+    {
+        id: 3,
+        nome: "Volkswagen Polo 2024",
+        marca: "volkswagen",
+        tipo: "hatch",
+        preco: 75000,
+        ano: 2024,
+        km: 0,
+        combustivel: "Gasolina",
+        cambio: "Manual",
+        imagem: "../assets/images/concessionaria_vw_polo.jpg",
+        descricao: "Hatch ágil e econômico, ideal para a cidade."
+    },
+    {
+        id: 4,
+        nome: "Fiat Strada 2024",
+        marca: "fiat",
+        tipo: "pickup",
+        preco: 85000,
+        ano: 2024,
+        km: 0,
+        combustivel: "Gasolina",
+        cambio: "Manual",
+        imagem: "../assets/images/concessionaria_fiat_strada.jpg",
+        descricao: "Pickup robusta e confiável para trabalho e lazer."
+    },
+    {
+        id: 5,
+        nome: "Chevrolet Onix 2024",
+        marca: "chevrolet",
+        tipo: "hatch",
+        preco: 65000,
+        ano: 2024,
+        km: 0,
+        combustivel: "Gasolina",
+        cambio: "Manual",
+        imagem: "../assets/images/concessionaria_chevrolet_onix.jpg",
+        descricao: "Hatch prático e econômico com ótima relação custo-benefício."
+    },
+    {
+        id: 6,
+        nome: "Toyota Hilux 2023",
+        marca: "toyota",
+        tipo: "pickup",
+        preco: 165000,
+        ano: 2023,
+        km: 25000,
+        combustivel: "Diesel",
+        cambio: "Automático",
+        imagem: "../assets/images/concessionaria_toyota_hilux.jpg",
+        descricao: "Pickup de alta performance, ideal para trabalho pesado."
+    },
+    {
+        id: 7,
+        nome: "Honda Civic 2023",
+        marca: "honda",
+        tipo: "sedan",
+        preco: 115000,
+        ano: 2023,
+        km: 20000,
+        combustivel: "Gasolina",
+        cambio: "Automático",
+        imagem: "../assets/images/concessionaria_honda_civic.jpg",
+        descricao: "Sedã esportivo com tecnologia de ponta e conforto."
+    },
+    {
+        id: 8,
+        nome: "Volkswagen T-Cross 2024",
+        marca: "volkswagen",
+        tipo: "suv",
+        preco: 125000,
+        ano: 2024,
+        km: 0,
+        combustivel: "Gasolina",
+        cambio: "Automático",
+        imagem: "../assets/images/concessionaria_vw_tcross.jpg",
+        descricao: "SUV compacto moderno com design atraente."
+    }
+];
+
+// Carregar veículos ao iniciar a página
 document.addEventListener('DOMContentLoaded', function() {
+    carregarVeiculos(veiculos);
+    configurarMenuMobile();
+    configurarFormulario();
+});
+
+// Função para carregar e exibir veículos
+function carregarVeiculos(lista) {
+    const grid = document.getElementById('veiculos-grid');
+    grid.innerHTML = '';
+
+    if (lista.length === 0) {
+        grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 40px; color: #757575;">Nenhum veículo encontrado com os filtros selecionados.</p>';
+        return;
+    }
+
+    lista.forEach(veiculo => {
+        const card = document.createElement('div');
+        card.className = 'veiculo-card';
+        card.innerHTML = `
+            <div class="veiculo-image">
+                <img src="${veiculo.imagem}" alt="${veiculo.nome}" onerror="this.src='https://via.placeholder.com/300x250?text=${encodeURIComponent(veiculo.nome)}'">
+                <div class="veiculo-badge">${veiculo.ano}</div>
+            </div>
+            <div class="veiculo-info">
+                <h3>${veiculo.nome}</h3>
+                <p>${veiculo.descricao}</p>
+                <div class="veiculo-specs">
+                    <div class="spec-item">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>${veiculo.km.toLocaleString('pt-BR')} km</span>
+                    </div>
+                    <div class="spec-item">
+                        <i class="fas fa-gas-pump"></i>
+                        <span>${veiculo.combustivel}</span>
+                    </div>
+                    <div class="spec-item">
+                        <i class="fas fa-cog"></i>
+                        <span>${veiculo.cambio}</span>
+                    </div>
+                    <div class="spec-item">
+                        <i class="fas fa-cube"></i>
+                        <span>${veiculo.tipo}</span>
+                    </div>
+                </div>
+                <div class="veiculo-price">R$ ${veiculo.preco.toLocaleString('pt-BR')}</div>
+                <div class="veiculo-actions">
+                    <a href="#contato" class="btn-info">Mais Informações</a>
+                    <a href="https://wa.me/5512978135300?text=Olá! Tenho interesse no ${encodeURIComponent(veiculo.nome)} (R$ ${veiculo.preco.toLocaleString('pt-BR')}). Gostaria de mais informações e agendar um test drive." target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
+// Função para aplicar filtros
+function aplicarFiltros() {
+    const tipo = document.getElementById('filtro-tipo').value;
+    const marca = document.getElementById('filtro-marca').value;
+    const preco = document.getElementById('filtro-preco').value;
+
+    let filtrados = veiculos.filter(veiculo => {
+        let passa = true;
+
+        if (tipo && veiculo.tipo !== tipo) passa = false;
+        if (marca && veiculo.marca !== marca) passa = false;
+        if (preco && veiculo.preco > parseInt(preco)) passa = false;
+
+        return passa;
+    });
+
+    carregarVeiculos(filtrados);
+}
+
+// Função para configurar menu mobile
+function configurarMenuMobile() {
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.nav');
-    
-    if (menuToggle && nav) {
+
+    if (menuToggle) {
         menuToggle.addEventListener('click', function() {
-            nav.classList.toggle('active');
+            nav.style.display = nav.style.display === 'block' ? 'none' : 'block';
         });
-    }
-    
-    // Smooth scrolling para links internos
-    const links = document.querySelectorAll('a[href^="#"]');
-    links.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                const headerHeight = document.querySelector('.header').offsetHeight;
-                const targetPosition = targetSection.offsetTop - headerHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-                
-                // Fechar menu mobile após clique
-                nav.classList.remove('active');
-            }
-        });
-    });
-    
-    // Header scroll effect
-    const header = document.querySelector('.header');
-    let lastScrollTop = 0;
-    
-    window.addEventListener('scroll', function() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        
-        if (scrollTop > 100) {
-            header.style.background = 'rgba(26, 26, 26, 0.98)';
-            header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-        } else {
-            header.style.background = 'rgba(26, 26, 26, 0.95)';
-            header.style.boxShadow = 'none';
-        }
-        
-        lastScrollTop = scrollTop;
-    });
-    
-    // Animação de entrada dos elementos
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
-    }, observerOptions);
-    
-    // Observar elementos para animação
-    const animatedElements = document.querySelectorAll('.catalogo-item, .servico-card, .about-text, .about-image, .contact-info, .contact-map');
-    animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(el);
-    });
-    
-    // Contador animado para estatísticas
-    function animateCounter(element, target, duration = 2000) {
-        let start = 0;
-        const increment = target / (duration / 16);
-        
-        const timer = setInterval(() => {
-            start += increment;
-            element.textContent = Math.floor(start) + (element.textContent.includes('+') ? '+' : '');
-            
-            if (start >= target) {
-                element.textContent = target + (element.textContent.includes('+') ? '+' : '');
-                clearInterval(timer);
-            }
-        }, 16);
-    }
-    
-    // Ativar contador quando a seção estiver visível
-    const statsSection = document.querySelector('.stats-grid');
-    if (statsSection) {
-        let hasAnimated = false;
-        const statsObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !hasAnimated) {
-                    hasAnimated = true;
-                    const statItems = document.querySelectorAll('.stat-item h3');
-                    statItems.forEach(item => {
-                        const text = item.textContent;
-                        const number = parseInt(text.replace(/\D/g, ''));
-                        animateCounter(item, number);
-                    });
-                }
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                nav.style.display = 'none';
             });
-        }, { threshold: 0.5 });
-        
-        statsObserver.observe(statsSection);
+        });
     }
-    
-    // Validação simples de formulário (se houver)
-    const forms = document.querySelectorAll('form');
-    forms.forEach(form => {
+}
+
+// Função para configurar formulário
+function configurarFormulario() {
+    const form = document.getElementById('contato-form');
+    if (form) {
         form.addEventListener('submit', function(e) {
-            const inputs = form.querySelectorAll('input[required], textarea[required]');
-            let isValid = true;
-            
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    isValid = false;
-                    input.style.borderColor = '#e74c3c';
-                } else {
-                    input.style.borderColor = '#ddd';
-                }
+            e.preventDefault();
+
+            const nome = document.getElementById('nome').value;
+            const email = document.getElementById('email').value;
+            const telefone = document.getElementById('telefone').value;
+            const assunto = document.getElementById('assunto').value;
+            const mensagem = document.getElementById('mensagem').value;
+
+            // Criar mensagem para WhatsApp
+            const mensagemWhatsApp = `Olá! Meu nome é ${nome}. ${mensagem}. Você pode me contatar em ${email} ou ${telefone}.`;
+
+            // Redirecionar para WhatsApp
+            const url = `https://wa.me/5512978135300?text=${encodeURIComponent(mensagemWhatsApp)}`;
+            window.open(url, '_blank');
+
+            // Limpar formulário
+            form.reset();
+        });
+    }
+}
+
+// Smooth scroll para links internos
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && document.querySelector(href)) {
+            e.preventDefault();
+            document.querySelector(href).scrollIntoView({
+                behavior: 'smooth'
             });
-            
-            if (!isValid) {
-                e.preventDefault();
-                alert('Por favor, preencha todos os campos obrigatórios.');
-            }
-        });
-    });
-    
-    // Lazy loading para imagens
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.remove('lazy');
-                imageObserver.unobserve(img);
-            }
-        });
-    });
-    
-    images.forEach(img => imageObserver.observe(img));
-    
-    // Efeito parallax no hero
-    window.addEventListener('scroll', function() {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero');
-        if (hero) {
-            hero.style.transform = `translateY(${scrolled * 0.5}px)`;
         }
     });
 });
 
+// Animação ao scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('.veiculo-card, .servico-card, .depoimento-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+});
