@@ -140,7 +140,7 @@ h1 {
 /* Hero Section */
 .hero {
     height: 100vh;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../assets/images/qAoHxLEsRNow.jpg');
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../assets/images/turismo_hero.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
