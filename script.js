@@ -1,222 +1,139 @@
-// YnotHost - script.js V2
-// Interações leves, sem duplicações e compatível com o novo visual
+// ======================================================
+// YnotHost - Script Premium V3
+// ======================================================
 
 document.addEventListener("DOMContentLoaded", () => {
-  const header = document.querySelector("header");
-  const mainHeader = document.querySelector(".main-header");
-  const navLinks = document.querySelectorAll('nav a[href^="#"]');
-  const sectionsToAnimate = document.querySelectorAll(
-    ".hero-text, .hero-image, .feature-item, .plan, .model, section h2, section > .container > p"
-  );
-  const whatsappLinks = document.querySelectorAll('a[href*="wa.me"]');
 
-  const prefersReducedMotion = window.matchMedia(
-    "(prefers-reduced-motion: reduce)"
-  ).matches;
+  // ==========================================
+  // MOBILE TOP BAR HIDE ON SCROLL
+  // ==========================================
 
-  /* =========================
-     Smooth scroll
-  ========================== */
-  navLinks.forEach((link) => {
-    link.addEventListener("click", (event) => {
-      const href = link.getAttribute("href");
+  let lastScroll = 0;
 
-      if (!href || href === "#") return;
+  window.addEventListener("scroll", () => {
 
-      const target = document.querySelector(href);
-      if (!target) return;
+    const currentScroll =
+      window.pageYOffset ||
+      document.documentElement.scrollTop;
 
-      event.preventDefault();
+    if (currentScroll > lastScroll && currentScroll > 80) {
 
-      const headerHeight = header ? header.offsetHeight : 0;
-      const targetPosition =
-        target.getBoundingClientRect().top +
-        window.pageYOffset -
-        headerHeight -
-        16;
+      document.body.classList.add("scroll-down");
+
+    } else {
+
+      document.body.classList.remove("scroll-down");
+
+    }
+
+    lastScroll = currentScroll <= 0
+      ? 0
+      : currentScroll;
+
+  });
+
+  // ==========================================
+  // BACK TO TOP
+  // ==========================================
+
+  const backToTop =
+    document.querySelector(".back-to-top");
+
+  if (backToTop) {
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 500) {
+
+        backToTop.classList.add("show");
+
+      } else {
+
+        backToTop.classList.remove("show");
+
+      }
+
+    });
+
+    backToTop.addEventListener("click", () => {
 
       window.scrollTo({
-        top: targetPosition,
-        behavior: prefersReducedMotion ? "auto" : "smooth",
+        top: 0,
+        behavior: "smooth"
       });
-    });
-  });
 
-  /* =========================
-     Scroll reveal
-  ========================== */
-  if ("IntersectionObserver" in window && !prefersReducedMotion) {
-    const observer = new IntersectionObserver(
-      (entries, observerInstance) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-in");
-            observerInstance.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.12,
-        rootMargin: "0px 0px -40px 0px",
-      }
+    });
+
+  }
+
+  // ==========================================
+  // SCROLL ANIMATION
+  // ==========================================
+
+  const animatedElements =
+    document.querySelectorAll(
+      ".animate-element"
     );
 
-    sectionsToAnimate.forEach((element) => {
-      element.classList.add("animate-element");
+  if (animatedElements.length) {
+
+    const observer =
+      new IntersectionObserver(
+
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add(
+                "animate-in"
+              );
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.15
+        }
+
+      );
+
+    animatedElements.forEach((element) => {
+
       observer.observe(element);
+
     });
-  } else {
-    sectionsToAnimate.forEach((element) => {
-      element.classList.add("animate-in");
-    });
+
   }
 
-  /* =========================
-     Header shadow on scroll
-  ========================== */
-  const updateHeaderState = () => {
-    if (!mainHeader) return;
+  // ==========================================
+  // LOADING SCREEN
+  // ==========================================
 
-    if (window.scrollY > 10) {
-      mainHeader.classList.add("is-scrolled");
-    } else {
-      mainHeader.classList.remove("is-scrolled");
-    }
-  };
+  const loadingScreen =
+    document.getElementById(
+      "loading-screen"
+    );
 
-  window.addEventListener("scroll", updateHeaderState, { passive: true });
-  updateHeaderState();
+  if (loadingScreen) {
 
-  /* =========================
-     Back to top
-  ========================== */
-  const backToTop = document.createElement("button");
-  backToTop.type = "button";
-  backToTop.className = "back-to-top";
-  backToTop.setAttribute("aria-label", "Voltar ao topo");
-  backToTop.innerHTML = '<i class="fas fa-arrow-up" aria-hidden="true"></i>';
-  document.body.appendChild(backToTop);
+    window.addEventListener("load", () => {
 
-  const toggleBackToTop = () => {
-    if (window.scrollY > 500) {
-      backToTop.classList.add("show");
-    } else {
-      backToTop.classList.remove("show");
-    }
-  };
+      loadingScreen.style.opacity = "0";
 
-  window.addEventListener("scroll", toggleBackToTop, { passive: true });
-  toggleBackToTop();
+      setTimeout(() => {
 
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: prefersReducedMotion ? "auto" : "smooth",
+        loadingScreen.style.display =
+          "none";
+
+      }, 500);
+
     });
-  });
 
-  /* =========================
-     WhatsApp tracking
-  ========================== */
-  const trackEvent = (eventName, eventData = {}) => {
-    if (typeof window.gtag === "function") {
-      window.gtag("event", eventName, eventData);
-    }
-  };
-
-  whatsappLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      const card = link.closest(".plan");
-      const model = link.closest(".model");
-
-      const itemName =
-        card?.querySelector("h3")?.textContent?.trim() ||
-        model?.querySelector("h3")?.textContent?.trim() ||
-        "WhatsApp CTA";
-
-      trackEvent("whatsapp_click", {
-        item_name: itemName,
-        page_path: window.location.pathname,
-      });
-    });
-  });
-
-  /* =========================
-     External model clicks
-  ========================== */
-  document.querySelectorAll(".model a").forEach((link) => {
-    const href = link.getAttribute("href");
-    if (!href || href.startsWith("#")) return;
-
-    link.addEventListener("click", () => {
-      const modelTitle = link.querySelector("h3")?.textContent?.trim() || "Model";
-      trackEvent("model_click", {
-        model_name: modelTitle,
-        page_path: window.location.pathname,
-      });
-    });
-  });
-
-  /* =========================
-     Footer year
-  ========================== */
-  const currentYear = document.querySelector(".footer-bottom-content p");
-  if (currentYear) {
-    currentYear.innerHTML = `&copy; ${new Date().getFullYear()} YnotHost - Todos os direitos reservados.`;
-  }
-
-  /* =========================
-     Keyboard accessibility
-  ========================== */
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && backToTop.classList.contains("show")) {
-      backToTop.focus();
-    }
-  });
-});
-
-/* =========================================================
-   Helpers globais
-========================================================= */
-
-function isMobile() {
-  return window.innerWidth <= 768;
-}
-
-function prefersReducedMotion() {
-  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-}
-
-function debounce(fn, delay = 200) {
-  let timer;
-
-  return function debounced(...args) {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn.apply(this, args), delay);
-  };
-}
-
-function throttle(fn, limit = 200) {
-  let lastCall = 0;
-
-  return function throttled(...args) {
-    const now = Date.now();
-    if (now - lastCall >= limit) {
-      lastCall = now;
-      return fn.apply(this, args);
-    }
-  };
-}
-/* ==========================================
-   TOP BAR MOBILE PREMIUM
-========================================== */
-
-window.addEventListener("scroll", () => {
-
-  if (window.scrollY > 120) {
-    document.body.classList.add("scroll-down");
-  } else {
-    document.body.classList.remove("scroll-down");
   }
 
 });

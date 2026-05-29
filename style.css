@@ -1847,7 +1847,33 @@ footer {
   }
 
 }
-{
+
+/* ==========================================
+   MOBILE HERO CARD FIX
+========================================== */
+
+@media (max-width: 768px) {
+
+  .hero-showcase {
+    height: 540px;
+  }
+
+  .showcase-main {
+    left: 18%;
+    width: 72%;
+    transform: translate(-50%, -50%) rotate(-10deg);
+  }
+
+  .showcase-secondary {
+    left: 58%;
+    width: 78%;
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+}
+
+@media (max-width: 480px) {
+
   .hero-showcase {
     height: 440px;
   }
@@ -1855,10 +1881,87 @@ footer {
   .showcase-main {
     left: 14%;
     width: 78%;
+    transform: translate(-50%, -50%) rotate(-8deg);
   }
 
   .showcase-secondary {
     left: 56%;
     width: 84%;
+    transform: translate(-50%, -50%) rotate(0deg);
   }
+
+}
+
+/* ==========================================
+   MOBILE HEADER COMPACT PREMIUM
+========================================== */
+
+@media (max-width: 768px) {
+
+  .main-header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    backdrop-filter: blur(18px);
+  }
+
+  .main-header .container {
+    min-height: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: 12px;
+  }
+
+  .logo {
+    gap: 10px;
+  }
+
+  .logo-icon {
+    font-size: 1.4rem;
+  }
+
+  .logo-main,
+  .logo-accent {
+    font-size: 1.8rem;
+  }
+
+  .logo-tagline {
+    font-size: 10px;
+    letter-spacing: .15em;
+  }
+
+  nav ul {
+    gap: 12px;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+
+  .header-cta .btn-primary {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+}
+
+/* ==========================================
+   WHATSAPP MOBILE FIX
+========================================== */
+
+@media (max-width: 768px) {
+
+  .whatsapp {
+    width: 58px;
+    height: 58px;
+    right: 16px;
+    bottom: 20px;
+    font-size: 1.5rem;
+  }
+
+  .back-to-top {
+    right: 16px;
+    bottom: 90px;
+  }
+
 }
