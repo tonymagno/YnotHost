@@ -207,27 +207,16 @@ function throttle(fn, limit = 200) {
     }
   };
 }
-/* =========================================================
-   MOBILE TOP BAR HIDE ON SCROLL
-========================================================= */
-
-let lastScrollTop = 0;
+/* ==========================================
+   TOP BAR MOBILE PREMIUM
+========================================== */
 
 window.addEventListener("scroll", () => {
 
-  const currentScroll =
-    window.pageYOffset ||
-    document.documentElement.scrollTop;
-
-  if (currentScroll > lastScrollTop + 10) {
+  if (window.scrollY > 120) {
     document.body.classList.add("scroll-down");
   } else {
     document.body.classList.remove("scroll-down");
   }
-
-  lastScrollTop =
-    currentScroll <= 0
-      ? 0
-      : currentScroll;
 
 });

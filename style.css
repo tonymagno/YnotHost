@@ -1752,7 +1752,8 @@ footer {
    MOBILE HEADER PREMIUM FIX
 ========================================================= */
 
-@media (max-width: 768px) {
+@media (max-width: 768px) 
+{
 
   /* TOP BAR MENOR */
   .top-bar {
@@ -1827,13 +1828,23 @@ footer {
 
 }
 
-/* ESCONDER BARRA ROXA AO ROLAR */
+/* ==========================================
+   MOBILE TOP BAR PREMIUM FIX
+========================================== */
 
 @media (max-width: 768px) {
 
+  .top-bar {
+    transition:
+      transform .45s ease,
+      opacity .45s ease;
+    will-change: transform;
+  }
+
   body.scroll-down .top-bar {
-    transform: translateY(-100%);
+    transform: translateY(-110%);
     opacity: 0;
+    pointer-events: none;
   }
 
 }
